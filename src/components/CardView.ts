@@ -5,7 +5,7 @@ import { IEvents } from "./base/events";
 
 
 
-export class CardView extends Component<ICard> {
+export class CardView<ICard> extends Component<ICard> {
     protected events: IEvents;
     protected _cardID: string;
     protected _itemIndex: HTMLElement;
@@ -83,7 +83,7 @@ export class CardView extends Component<ICard> {
     }
 }
 
-export class CardModalView extends CardView {
+export class CardModalView<ICard> extends CardView<ICard> {
     constructor(protected container: HTMLElement, events: IEvents) {
         super(container, events);
         this._image = this.container.querySelector('.card__image');
@@ -99,7 +99,7 @@ export class CardModalView extends CardView {
     }
 }
 
-export class CardBasket extends CardView {
+export class CardBasket<ICard> extends CardView<ICard> {
     protected itemDelete: HTMLButtonElement;
     
     constructor(protected container: HTMLElement, events: IEvents) {
@@ -113,7 +113,7 @@ export class CardBasket extends CardView {
     };
 }
 
-export class CardGallery extends CardView {
+export class CardGallery<ICard> extends CardView<ICard> {
     constructor(protected container: HTMLElement, events: IEvents) {
         super(container, events);
         this._image = this.container.querySelector('.card__image');

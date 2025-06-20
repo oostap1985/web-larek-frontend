@@ -166,6 +166,12 @@ events.on('formView: contactsForm.submit', () => {
 	api.postOrder(order.getOrderData(), basket.cards, basket.getTotal())
 		.then((data) => {
 			basket.clear();
+			//Исправление замечания от ревьера Ирины:
+			// Очистка колличества товаров на иконке корзины на главной странице.
+			// Очистка полей ввода в формах и кнопок выбора оплаты
+			page.basketCount = basket.getCount();//---
+			order.clear();//----
+			orderFormView.clear();//----
 			successView.total = data.total;
 			modal.content = successView.render();
 			modal.open();
@@ -178,10 +184,10 @@ events.on('formView: contactsForm.submit', () => {
 
 // нажали кнопку **За новыми покупками** в successView
 events.on('successView: submit', () => {
-	basket.clear();
-	order.clear();// Добавил очистку полей форм
+	//basket.clear();
+	//order.clear();
 	modal.close();
-	page.basketCount = basket.getCount();
+	//page.basketCount = basket.getCount();
 });
 
 

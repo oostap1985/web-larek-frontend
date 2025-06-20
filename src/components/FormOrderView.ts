@@ -46,4 +46,13 @@ export class FormOrderView <IOrderData> extends FormView<IOrderData> {
         console.log('FormOrderView: payment =', method);
         this._paymentMethod = method;
     }
+
+    clear() {
+        if(this._cashButton.classList.contains('button_alt-active')) {
+            this._cashButton.classList.remove('button_alt-active');
+        }
+        if(this._cardButton.classList.contains('button_alt-active')) {
+            this._cardButton.classList.remove('button_alt-active');
+        }
+    }
 }
